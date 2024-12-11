@@ -24,7 +24,9 @@ class SQLiteHelper(
             "CREATE TABLE proyectos (" +
                     "id_proyecto INTEGER PRIMARY KEY AUTOINCREMENT," +
                     "nombre_proyecto TEXT NOT NULL," +
-                    "descripcion TEXT) "
+                    "descripcion TEXT," +
+                    "id_usuario INTEGER, " +
+                    "FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)) "
         )
         db.execSQL(
             "CREATE TABLE tareas (" +
@@ -33,6 +35,8 @@ class SQLiteHelper(
                     "descripcion TEXT," +
                     "prioridad TEXT," +
                     "id_proyecto INTEGER," +
+                    "id_usuario INTEGER," +
+                    "FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)," +
                     "FOREIGN KEY (id_proyecto) REFERENCES proyectos(id_proyecto))"
         )
     }
@@ -72,5 +76,13 @@ class SQLiteHelper(
             query.close();
             return null;
         }
+    }
+
+    fun guardarTarea(titulo: String, desc: String, prioridad: String, id_usuario: Int) {
+        var db = writableDatabase;
+        var content = ContentValues();
+        content.put("nombre_tarea", titulo);
+        content.put("descripcion", desc);
+        content.put("prioridad", prioridad);
     }
 }
