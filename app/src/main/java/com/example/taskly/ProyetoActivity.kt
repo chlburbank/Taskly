@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.speech.RecognizerIntent
 import android.speech.SpeechRecognizer
 import android.speech.RecognitionListener
+import android.view.GestureDetector
+import android.view.MotionEvent
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
@@ -19,6 +21,8 @@ class ProyetoActivity : AppCompatActivity() {
 
     private lateinit var speechRecognizer: SpeechRecognizer
     private lateinit var currentEditText: EditText
+    private lateinit var gestureDetector: GestureDetector
+    private var idUsuario: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,17 +37,20 @@ class ProyetoActivity : AppCompatActivity() {
         val DB = SQLiteHelper(this, "usuarios", null, 1)
 
         val extras = intent.extras
-        val idUsuario = extras?.getInt("ID_USUARIO").toString()
+        idUsuario = extras?.getInt("ID_USUARIO").toString()
 
         val etTitulo = findViewById<EditText>(R.id.etTitulo)
         val etDesc = findViewById<EditText>(R.id.etDescripcion)
         val btnGuardar = findViewById<Button>(R.id.btnGuardar)
         val btnAtras = findViewById<ImageView>(R.id.vBack)
-        val btnGrabar = findViewById<ImageView>(R.id.btnGrabar);
+        val btnGrabar = findViewById<ImageView>(R.id.btnGrabar)
+
+        // Initialize GestureDetector
+        gestureDetector = GestureDetector(this, GestureListener())
 
         btnAtras.setOnClickListener {
             val intent = Intent(this, MenuPrincipalActivity::class.java)
-            intent.putExtra("ID_USUARIO", idUsuario.toInt())
+            intent.putExtra("ID_USUARIO", idUsuario?.toInt())
             startActivity(intent)
         }
 
@@ -101,7 +108,21 @@ class ProyetoActivity : AppCompatActivity() {
         }
     }
 
+    override fun onTouchEvent(event: MotionEvent): Boolean {
+        gestureDetector.onTouchEvent(event)
+        return super.onTouchEvent(event)
+    }
+
+    private inner class GestureListener : GestureDetector.SimpleOnGestureListener() {
+        override fun onDoubleTap(e: MotionEvent): Boolean {
+            val intent = Intent(this@ProyetoActivity, MenuPrincipalActivity::class.java)
+            intent.putExtra("ID_USUARIO", idUsuario?.toInt())
+            startActivity(intent)
+            return true
+        }
+    }
+
     companion object {
-        private const val REQUEST_CODE_SPEECH_INPUT = 100
+        const val REQUEST_CODE_SPEECH_INPUT = 100
     }
 }

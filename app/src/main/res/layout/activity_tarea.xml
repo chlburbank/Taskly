@@ -8,10 +8,23 @@
     android:background="@drawable/gradient_background"
     tools:context=".TareaActivity">
 
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="326dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-thin"
+        android:justificationMode="inter_word"
+        android:text="Selecciona la caja de texto que desea escribir y pulsa el botón de grabar para realizar escrituras más fáciles"
+        android:textColor="#DCDCDC"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view3" />
+
     <View
         android:id="@+id/view3"
         android:layout_width="330dp"
-        android:layout_height="511dp"
+        android:layout_height="611dp"
         android:layout_marginTop="52dp"
         android:background="@drawable/container_background"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,33 +34,32 @@
 
     <Button
         android:id="@+id/btnGuardar"
-        android:layout_width="146dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="28dp"
+        android:layout_width="163dp"
+        android:layout_height="56dp"
+        android:layout_marginBottom="16dp"
         android:text="Guardar"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/view3"
-        app:layout_constraintHorizontal_bias="0.831"
-        app:layout_constraintStart_toStartOf="@+id/view3"
-        app:layout_constraintTop_toBottomOf="@+id/sPrioridad" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginBottom="104dp"
-        android:text="Prioridad:"
-        android:textColor="#DCDCDC"
-        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/view3"
+        app:layout_constraintEnd_toEndOf="@+id/view3"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="@+id/view3" />
+
+    <ImageButton
+        android:id="@+id/btnGrabarTarea"
+        android:layout_width="153dp"
+        android:layout_height="60dp"
+        android:backgroundTint="#2e2e2e"
+        app:layout_constraintBottom_toTopOf="@+id/btnGuardar"
+        app:layout_constraintEnd_toEndOf="@+id/view3"
+        app:layout_constraintStart_toStartOf="@+id/view3"
+        app:layout_constraintTop_toBottomOf="@+id/sPrioridad"
+        app:srcCompat="@android:drawable/ic_btn_speak_now" />
 
     <EditText
         android:id="@+id/etDescripcion"
         android:layout_width="268dp"
         android:layout_height="185dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="104dp"
         android:background="@drawable/et_box"
         android:ems="10"
         android:gravity="top"
@@ -55,9 +67,9 @@
         android:padding="10dp"
         android:textColor="#494949"
         app:layout_constraintEnd_toEndOf="@+id/view3"
-        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintHorizontal_bias="0.467"
         app:layout_constraintStart_toStartOf="@+id/view3"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        app:layout_constraintTop_toBottomOf="@+id/etTitulo" />
 
     <TextView
         android:id="@+id/textView8"
@@ -105,12 +117,24 @@
         android:id="@+id/sPrioridad"
         android:layout_width="124dp"
         android:layout_height="39dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="44dp"
         android:background="@android:color/white"
         app:layout_constraintEnd_toEndOf="@+id/view3"
+        app:layout_constraintTop_toBottomOf="@+id/etDescripcion" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:text="Prioridad:"
+        android:textColor="#DCDCDC"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/sPrioridad"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/textView8"
+        app:layout_constraintStart_toStartOf="@+id/etDescripcion"
         app:layout_constraintTop_toBottomOf="@+id/etDescripcion" />
 
     <ImageView

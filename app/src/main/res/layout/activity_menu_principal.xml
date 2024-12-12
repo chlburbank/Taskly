@@ -112,4 +112,20 @@
         app:layout_constraintTop_toTopOf="@+id/vVoz"
         app:srcCompat="@android:drawable/ic_btn_speak_now" />
 
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="326dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="sans-serif-thin"
+        android:justificationMode="inter_word"
+        android:text="Para acceder a las ventanas de crear proyectos o tareas puede pulsar sobre ellas o presionar el boton de grabar y decir &quot;Crear Proyecto&quot; o &quot;Crear Tarea&quot;"
+        android:textColor="#DCDCDC"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view2"
+        app:layout_constraintVertical_bias="0.009" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
